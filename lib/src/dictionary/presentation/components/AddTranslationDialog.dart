@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:tradilist_mobile/src/shared/colors.dart';
-import 'package:tradilist_mobile/src/shared/ui_styles.dart';
+import 'package:tradilist_mobile/src/common/styles/ui_styles.dart';
+import 'package:tradilist_mobile/src/common/utils/colors.dart';
 
 class AddTranslationDialog extends StatelessWidget {
   const AddTranslationDialog({Key? key}) : super(key: key);

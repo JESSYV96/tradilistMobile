@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:tradilist_mobile/src/translation/presentation/screens/translation_list.dart';
-import 'package:tradilist_mobile/src/translation/view_models/translation_view_model.dart';
+import 'package:tradilist_mobile/src/dictionary/view_models/translation_view_model.dart';
+import 'package:tradilist_mobile/src/home_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -31,7 +31,7 @@ class MyApp extends StatelessWidget {
           // is not restarted.
           primarySwatch: Colors.blue,
         ),
-        home: const TranslationListScreen(),
+        home: const HomeScreen(),
       ),
     );
   }
