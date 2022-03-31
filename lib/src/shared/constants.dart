@@ -1,0 +1,1 @@
+const String apiUrl = 'https://tradilist-app.herokuapp.com';
