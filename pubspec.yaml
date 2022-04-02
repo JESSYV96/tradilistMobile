@@ -58,9 +58,9 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-  # assets:
-  #   - images/a_dot_burr.jpeg
-  #   - images/a_dot_ham.jpeg
+  assets:
+    - assets/images/icons/google_icon.png
+    - assets/images/icons/facebook_icon.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
@@ -68,6 +68,6 @@ flutter:
   fonts:
     - family: LemonMilk
       fonts:
-        - asset: fonts/lemon_milk/lemon_milk.otf
-        - asset: fonts/lemon_milk/lemon_milk_bold.otf
+        - asset: assets/fonts/lemon_milk/lemon_milk.otf
+        - asset: assets/fonts/lemon_milk/lemon_milk_bold.otf
           weight: 700
