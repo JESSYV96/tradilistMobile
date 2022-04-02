@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:tradilist_mobile/src/auth/presentation/components/login_with_social_network.dart';
+import 'package:tradilist_mobile/src/auth/view_models/login_view_model.dart';
 import 'package:tradilist_mobile/src/common/assets/ui_styles.dart';
 
 import '../../../common/utils/colors.dart';
@@ -9,6 +11,8 @@ class LoginScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    LoginViewModel loginVM = context.watch<LoginViewModel>();
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('CONNEXION'),
@@ -22,7 +26,7 @@ class LoginScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            _loginForm(),
+            _loginForm(loginVM),
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(
@@ -60,7 +64,7 @@ class LoginScreen extends StatelessWidget {
   }
 }
 
-Widget _loginForm() {
+Widget _loginForm(LoginViewModel loginVM) {
   return Column(
     children: [
       Material(
@@ -79,13 +83,16 @@ Widget _loginForm() {
         elevation: 15,
         borderRadius: const BorderRadius.all(Radius.circular(10)),
         child: TextFormField(
-          obscureText: true,
+          obscureText: loginVM.isObcurePassword,
           decoration: textInputDecoration.copyWith(
-              hintText: 'Mot de passe',
-              suffixIcon: const Icon(
-                Icons.visibility_off_outlined,
-              ),
-              suffixIconColor: AppColors.primary),
+            hintText: 'Mot de passe',
+            suffixIcon: GestureDetector(
+              onTap: () {
+                loginVM.setObcurePassword();
+              },
+              child: loginVM.displayVisibilityIcon(),
+            ),
+          ),
         ),
       ),
       const Padding(
