@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:tradilist_mobile/src/shared/colors.dart';
-import 'package:tradilist_mobile/src/translation/presentation/helpers/DialogHelper.dart';
-import 'package:tradilist_mobile/src/translation/view_models/translation_view_model.dart';
+import 'package:tradilist_mobile/src/common/components/loading.dart';
+import 'package:tradilist_mobile/src/common/helpers/DialogHelper.dart';
+import 'package:tradilist_mobile/src/common/utils/colors.dart';
+import 'package:tradilist_mobile/src/dictionary/view_models/translation_view_model.dart';
 
-class TranslationListScreen extends StatelessWidget {
-  const TranslationListScreen({Key? key}) : super(key: key);
+class DictionaryScreen extends StatelessWidget {
+  const DictionaryScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     TranslationViewModel translationVM = context.watch<TranslationViewModel>();
     if (translationVM.loading) {
-      return const Text('Loading...');
+      return const Loading();
     }
     return Scaffold(
       floatingActionButton: FloatingActionButton(

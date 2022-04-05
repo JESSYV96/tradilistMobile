@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:tradilist_mobile/src/translation/models/translation.dart';
-import 'package:tradilist_mobile/src/translation/repositories/remote/translation_repository.dart';
+import 'package:tradilist_mobile/src/dictionary/models/translation.dart';
+import 'package:tradilist_mobile/src/dictionary/repositories/remote/translation_repository.dart';
 
 class TranslationViewModel extends ChangeNotifier {
   bool _isLoading = false;

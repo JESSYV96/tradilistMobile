@@ -1,4 +1,5 @@
-import 'package:tradilist_mobile/src/translation/models/translation.dart';
+
+import 'package:tradilist_mobile/src/dictionary/models/translation.dart';
 
 class TranslationRepository {
   static Future<List<Translation>> fetchTranslations() async {
