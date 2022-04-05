@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tradilist_mobile/src/common/styles/ui_styles.dart';
+import 'package:tradilist_mobile/src/common/assets/ui_styles.dart';
 import 'package:tradilist_mobile/src/common/utils/colors.dart';
 
 class AddTranslationDialog extends StatelessWidget {

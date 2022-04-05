@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:tradilist_mobile/src/auth/presentation/screens/login_screen.dart';
+import 'package:tradilist_mobile/src/auth/view_models/login_view_model.dart';
+import 'package:tradilist_mobile/src/common/helpers/create_material_color.dart';
+import 'package:tradilist_mobile/src/common/utils/colors.dart';
 import 'package:tradilist_mobile/src/dictionary/view_models/translation_view_model.dart';
-import 'package:tradilist_mobile/src/home_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,25 +17,22 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
-      providers: [
-        ChangeNotifierProvider(create: (_) => TranslationViewModel())
-      ],
-      child: MaterialApp(
-        title: 'Flutter Demo',
-        theme: ThemeData(
-          // This is the theme of your application.
-          //
-          // Try running your application with "flutter run". You'll see the
-          // application has a blue toolbar. Then, without quitting the app, try
-          // changing the primarySwatch below to Colors.green and then invoke
-          // "hot reload" (press "r" in the console where you ran "flutter run",
-          // or simply save your changes to "hot reload" in a Flutter IDE).
-          // Notice that the counter didn't reset back to zero; the application
-          // is not restarted.
-          primarySwatch: Colors.blue,
-        ),
-        home: const HomeScreen(),
-      ),
-    );
+        providers: [
+          ChangeNotifierProvider(create: (_) => TranslationViewModel()),
+          ChangeNotifierProvider(create: (_) => LoginViewModel()),
+        ],
+        child: MaterialApp(
+          title: 'Tradilist',
+          debugShowCheckedModeBanner: false,
+          theme: ThemeData(
+              appBarTheme: const AppBarTheme(
+                backgroundColor: AppColors.background,
+                foregroundColor: AppColors.textColor,
+                elevation: 0,
+              ),
+              fontFamily: 'LemonMilk',
+              primarySwatch: createMaterialColor(AppColors.primary)),
+          home: const LoginScreen(),
+        ));
   }
 }
