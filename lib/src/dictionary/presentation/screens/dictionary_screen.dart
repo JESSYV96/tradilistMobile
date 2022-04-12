@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:tradilist_mobile/src/common/helpers/DialogHelper.dart';
 import 'package:tradilist_mobile/src/common/presentation/components/loading.dart';
 import 'package:tradilist_mobile/src/common/utils/colors.dart';
-import 'package:tradilist_mobile/src/dictionary/view_models/translation_view_model.dart';
+import '../../view_models/translation_view_model.dart';
 
 class DictionaryScreen extends StatelessWidget {
   const DictionaryScreen({Key? key}) : super(key: key);

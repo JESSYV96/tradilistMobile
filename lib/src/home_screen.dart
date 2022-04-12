@@ -1,7 +1,6 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:tradilist_mobile/src/account/screens/account_screen.dart';
-import 'package:tradilist_mobile/src/dictionary/presentation/screens/dictionary_screen.dart';
-import 'package:tradilist_mobile/src/quiz/screens/quiz_theme_screen.dart';
+import 'package:tradilist_mobile/src/router/app_router.gr.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -11,34 +10,28 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  final PageController _pageController = PageController();
-  int _currentIndex = 0;
-
-  void setScreenIndex(int index) {
-    setState(() {
-      _currentIndex = index;
-    });
-    _pageController.jumpToPage(index);
-  }
+  // final IAccountViewModel _accountScreenViewModel = AccountViewModel();
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: PageView(
-        onPageChanged: (index) => setScreenIndex(index),
-        controller: _pageController,
-        children: const [DictionaryScreen(), QuizScreen(), AccountScreen()],
+    return AutoTabsScaffold(
+      appBarBuilder: (_, tabsRouter) => AppBar(
+        leading: const AutoBackButton(),
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        onTap: (index) => setScreenIndex(index),
-        currentIndex: _currentIndex,
+      routes: const [
+        DictionaryRouter(),
+        QuizRouter(),
+        AccountRouter(),
+      ],
+      bottomNavigationBuilder: (_, tabsRouter) => BottomNavigationBar(
+        onTap: (index) {
+          tabsRouter.setActiveIndex(index);
+        },
+        currentIndex: tabsRouter.activeIndex,
         items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-              icon: Icon(Icons.home, size: 24), label: "Dictionary"),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.home, size: 24), label: "Quiz"),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.home, size: 24), label: "Account")
+          BottomNavigationBarItem(icon: Icon(Icons.home, size: 30), label: ""),
+          BottomNavigationBarItem(icon: Icon(Icons.home, size: 30), label: ""),
+          BottomNavigationBarItem(icon: Icon(Icons.home, size: 30), label: "")
         ],
       ),
     );
