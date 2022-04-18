@@ -1,6 +1,8 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:tradilist_mobile/src/router/app_router.gr.dart';
+
+import 'screens/account/profile/account_screen.dart';
+import 'screens/dictionary/dictionary_screen.dart';
+import 'screens/quiz/quiz_theme_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -10,28 +12,42 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  // final IAccountViewModel _accountScreenViewModel = AccountViewModel();
+  final PageController _pageController = PageController();
+  int _currentIndex = 0;
+
+  void setScreenIndex(int index) {
+    setState(() {
+      currentIndex = index;
+    });
+  }
+
+  int get currentIndex => _currentIndex;
+  set currentIndex(int index) {
+   _currentIndex = index;
+  }
 
   @override
   Widget build(BuildContext context) {
-    return AutoTabsScaffold(
-      appBarBuilder: (_, tabsRouter) => AppBar(
-        leading: const AutoBackButton(),
+    return Scaffold(
+      body: PageView(
+        onPageChanged: (index) => setScreenIndex(index),
+        controller: _pageController,
+        children: const [DictionaryScreen(), QuizScreen(), AccountScreen()],
       ),
-      routes: const [
-        DictionaryRouter(),
-        QuizRouter(),
-        AccountRouter(),
-      ],
-      bottomNavigationBuilder: (_, tabsRouter) => BottomNavigationBar(
-        onTap: (index) {
-          tabsRouter.setActiveIndex(index);
-        },
-        currentIndex: tabsRouter.activeIndex,
+      bottomNavigationBar: BottomNavigationBar(
+        showSelectedLabels: false,
+        showUnselectedLabels: false,
+        onTap: (index) => setScreenIndex(index),
+        currentIndex: _currentIndex,
         items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(icon: Icon(Icons.home, size: 30), label: ""),
-          BottomNavigationBarItem(icon: Icon(Icons.home, size: 30), label: ""),
-          BottomNavigationBarItem(icon: Icon(Icons.home, size: 30), label: "")
+          BottomNavigationBarItem(
+              icon: Icon(Icons.home, size: 30), label: "Dictionary"),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.question_answer_outlined, size: 30),
+              label: "Quiz"),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.account_circle_outlined, size: 30),
+              label: "Account")
         ],
       ),
     );

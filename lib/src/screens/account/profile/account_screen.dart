@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../common/UIKit/default_button.dart';
 import 'components/progress_circle.dart';
@@ -54,10 +55,10 @@ class AccountScreen extends StatelessWidget {
               child: Column(
                 children: [
                   DefaultButton(
-                    text: 'Changer de mot de passe',
-                    onButtonTap: () {}
-                
-                  ),
+                      text: 'Changer de mot de passe',
+                      onButtonTap: () {
+                        context.goNamed('changePassword');
+                      }),
                   const Padding(padding: EdgeInsets.symmetric(vertical: 10.0)),
                   const DefaultButton(
                     text: 'Se déconnecter',

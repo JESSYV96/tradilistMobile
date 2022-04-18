@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:tradilist_mobile/src/common/assets/ui_styles.dart';
 
@@ -21,7 +22,7 @@ class LoginScreen extends StatelessWidget {
         elevation: Theme.of(context).appBarTheme.elevation,
       ),
       body: Container(
-        color: AppColors.background,
+        color: Theme.of(context).appBarTheme.backgroundColor,
         padding: const EdgeInsets.symmetric(horizontal: 25),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -30,7 +31,7 @@ class LoginScreen extends StatelessWidget {
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(
-                onPressed: () {},
+                onPressed: () => context.goNamed('home'),
                 style: ButtonStyle(
                     elevation: MaterialStateProperty.all(20),
                     padding: MaterialStateProperty.all(
@@ -44,19 +45,19 @@ class LoginScreen extends StatelessWidget {
               ),
             ),
             const LoginWithSocialNetwork(),
-            Column(
-              children: [
-                const Text('Tu as dejà un compte ?'),
-                TextButton(
-                  style: ButtonStyle(
-                    overlayColor:
-                        MaterialStateProperty.all<Color>(Colors.transparent),
-                  ),
-                  onPressed: () {},
-                  child: const Text('Connecte toi'),
-                ),
-              ],
-            )
+            // Column(
+            //   children: [
+            //     const Text('Tu as dejà un compte ?'),
+            //     TextButton(
+            //       style: ButtonStyle(
+            //         overlayColor:
+            //             MaterialStateProperty.all<Color>(Colors.transparent),
+            //       ),
+            //       onPressed: () {},
+            //       child: const Text('Connecte toi'),
+            //     ),
+            //   ],
+            // )
           ],
         ),
       ),
@@ -102,14 +103,14 @@ Widget _loginForm(LoginViewModel loginVM) {
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
           TextButton(
-              style: ButtonStyle(
-                overlayColor:
-                    MaterialStateProperty.all<Color>(Colors.transparent),
-                foregroundColor:
-                    MaterialStateProperty.all<Color>(Colors.black54),
-              ),
-              onPressed: () {},
-              child: const Text('Mot de passe oublié ?'))
+            style: ButtonStyle(
+              overlayColor:
+                  MaterialStateProperty.all<Color>(Colors.transparent),
+              foregroundColor: MaterialStateProperty.all<Color>(Colors.black54),
+            ),
+            onPressed: () {},
+            child: const Text('Mot de passe oublié ?'),
+          )
         ],
       )
     ],
