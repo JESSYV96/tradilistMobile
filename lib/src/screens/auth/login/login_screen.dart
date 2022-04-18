@@ -45,19 +45,21 @@ class LoginScreen extends StatelessWidget {
               ),
             ),
             const LoginWithSocialNetwork(),
-            // Column(
-            //   children: [
-            //     const Text('Tu as dejà un compte ?'),
-            //     TextButton(
-            //       style: ButtonStyle(
-            //         overlayColor:
-            //             MaterialStateProperty.all<Color>(Colors.transparent),
-            //       ),
-            //       onPressed: () {},
-            //       child: const Text('Connecte toi'),
-            //     ),
-            //   ],
-            // )
+            Column(
+              children: [
+                const Text('Tu n\'as pas de compte ?'),
+                TextButton(
+                  style: ButtonStyle(
+                    overlayColor:
+                        MaterialStateProperty.all<Color>(Colors.transparent),
+                  ),
+                  onPressed: () {
+                    context.goNamed('registration');
+                  },
+                  child: const Text('Inscris toi'),
+                ),
+              ],
+            )
           ],
         ),
       ),
