@@ -1,12 +1,7 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import '../../common/presentation/components/default_button.dart';
-import '../components/progress_circle.dart';
 
-abstract class IAccountViewModel {
-  void goToChangePasswordScreen();
-  void logout();
-}
+import '../../../common/UIKit/default_button.dart';
+import 'components/progress_circle.dart';
 
 class AccountScreen extends StatelessWidget {
   final ringSize = 104.0;
@@ -60,8 +55,8 @@ class AccountScreen extends StatelessWidget {
                 children: [
                   DefaultButton(
                     text: 'Changer de mot de passe',
-                    onButtonTap: () =>
-                        context.router.pushNamed('/account/changePassword'),
+                    onButtonTap: () {}
+                
                   ),
                   const Padding(padding: EdgeInsets.symmetric(vertical: 10.0)),
                   const DefaultButton(

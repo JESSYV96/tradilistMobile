@@ -1,8 +1,8 @@
 import 'dart:math';
-
 import 'package:flutter/material.dart';
 
-import '../../common/utils/colors.dart';
+import '../../../../common/utils/colors.dart';
+
 
 class ProgressCircle extends CustomPainter {
   int translationsNumber;

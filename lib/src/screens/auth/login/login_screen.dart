@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:tradilist_mobile/src/auth/presentation/components/login_with_social_network.dart';
-import 'package:tradilist_mobile/src/auth/view_models/login_view_model.dart';
 import 'package:tradilist_mobile/src/common/assets/ui_styles.dart';
 
 import '../../../common/utils/colors.dart';
+import 'components/login_with_social_network.dart';
+import 'login_view_model.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({Key? key}) : super(key: key);
