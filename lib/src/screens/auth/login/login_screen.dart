@@ -22,7 +22,7 @@ class LoginScreen extends StatelessWidget {
         elevation: Theme.of(context).appBarTheme.elevation,
       ),
       body: Container(
-        color: Theme.of(context).appBarTheme.backgroundColor,
+        color: Theme.of(context).backgroundColor,
         padding: const EdgeInsets.symmetric(horizontal: 25),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -93,7 +93,7 @@ Widget _loginForm(LoginViewModel loginVM) {
               onTap: () {
                 loginVM.setObcurePassword();
               },
-              child: loginVM.displayVisibilityIcon(),
+              child: loginVM.passwordVisibilityIcon(),
             ),
           ),
         ),
