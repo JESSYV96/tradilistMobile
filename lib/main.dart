@@ -1,24 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:go_router/go_router.dart';
-import 'package:tradilist_mobile/src/common/helpers/create_material_color.dart';
-import 'package:tradilist_mobile/src/common/utils/colors.dart';
-import 'package:tradilist_mobile/src/screens/dictionary/translation_view_model.dart';
-import 'package:tradilist_mobile/src/screens/quiz/quiz_theme_screen.dart';
 
+import 'src/common/helpers/create_material_color.dart';
+import 'src/common/utils/colors.dart';
 import 'src/home_screen.dart';
 import 'src/screens/account/change_password/change_password_screen.dart';
-import 'src/screens/account/profile/account_screen.dart';
 import 'src/screens/auth/login/login_screen.dart';
 import 'src/screens/auth/login/login_view_model.dart';
-import 'src/screens/dictionary/dictionary_screen.dart';
+import 'src/screens/auth/registration/registration_screen.dart';
+import 'src/screens/dictionary/translation_view_model.dart';
 
 Future<void> main() async {
   runApp(MyApp());
 }
 
 class LoginInfo {
-  static const isLoggedIn = false;
+  static const isLoggedIn = true;
 }
 
 class MyApp extends StatelessWidget {
@@ -28,8 +26,8 @@ class MyApp extends StatelessWidget {
     initialLocation: '/login',
     debugLogDiagnostics: true,
     redirect: (state) {
-      const bool isLoggedIn = LoginInfo.isLoggedIn;
-      final bool isLogging = state.subloc == '/login';
+      // const bool isLoggedIn = LoginInfo.isLoggedIn;
+      // final bool isLogging = state.subloc == '/login';
 
       // if (!isLoggedIn && !isLogging) return '/login';
       // if (isLoggedIn && isLogging) return '/';
@@ -43,26 +41,9 @@ class MyApp extends StatelessWidget {
         builder: (context, state) => const HomeScreen(),
         routes: [
           GoRoute(
-            name: 'dictionary',
-            path: 'dictionary',
-            builder: (context, state) => const DictionaryScreen(),
-          ),
-          GoRoute(
-            name: 'profile',
-            path: 'profile',
-            builder: (context, state) => const AccountScreen(),
-            routes: [
-              GoRoute(
-                name: 'changePassword',
-                path: 'change-password',
-                builder: (context, state) => const ChangePasswordScreen(),
-              ),
-            ],
-          ),
-          GoRoute(
-            name: 'quiz',
-            path: 'quiz',
-            builder: (context, state) => const QuizScreen(),
+            name: 'changePassword',
+            path: 'profile/change-password',
+            builder: (context, state) => const ChangePasswordScreen(),
           ),
         ],
       ),
@@ -70,6 +51,11 @@ class MyApp extends StatelessWidget {
         name: 'login',
         path: '/login',
         builder: (context, state) => const LoginScreen(),
+      ),
+      GoRoute(
+        name: 'registration',
+        path: '/register',
+        builder: (context, state) => const RegistrationScreen(),
       ),
     ],
     errorBuilder: (context, state) => const Text('ERROR'),
@@ -98,6 +84,7 @@ class MyApp extends StatelessWidget {
             bodyText1: TextStyle(fontSize: 10.0),
             button: TextStyle(fontSize: 12.0, color: Colors.white),
           ),
+          backgroundColor: AppColors.background,
         ),
         routerDelegate: _router.routerDelegate,
         routeInformationParser: _router.routeInformationParser,

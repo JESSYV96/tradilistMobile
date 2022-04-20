@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:tradilist_mobile/src/common/assets/ui_styles.dart';
+import 'package:tradilist_mobile/src/screens/auth/components/login_with_social_network.dart';
 
 import '../../../common/utils/colors.dart';
-import 'components/login_with_social_network.dart';
 import 'login_view_model.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -22,7 +22,7 @@ class LoginScreen extends StatelessWidget {
         elevation: Theme.of(context).appBarTheme.elevation,
       ),
       body: Container(
-        color: Theme.of(context).appBarTheme.backgroundColor,
+        color: Theme.of(context).backgroundColor,
         padding: const EdgeInsets.symmetric(horizontal: 25),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -45,19 +45,7 @@ class LoginScreen extends StatelessWidget {
               ),
             ),
             const LoginWithSocialNetwork(),
-            // Column(
-            //   children: [
-            //     const Text('Tu as dejà un compte ?'),
-            //     TextButton(
-            //       style: ButtonStyle(
-            //         overlayColor:
-            //             MaterialStateProperty.all<Color>(Colors.transparent),
-            //       ),
-            //       onPressed: () {},
-            //       child: const Text('Connecte toi'),
-            //     ),
-            //   ],
-            // )
+            _notRegisteredWidget(context)
           ],
         ),
       ),
@@ -91,7 +79,7 @@ Widget _loginForm(LoginViewModel loginVM) {
               onTap: () {
                 loginVM.setObcurePassword();
               },
-              child: loginVM.displayVisibilityIcon(),
+              child: loginVM.passwordVisibilityIcon(),
             ),
           ),
         ),
@@ -113,6 +101,23 @@ Widget _loginForm(LoginViewModel loginVM) {
           )
         ],
       )
+    ],
+  );
+}
+
+Widget _notRegisteredWidget(BuildContext context) {
+  return Column(
+    children: [
+      const Text('Tu n\'as pas de compte ?'),
+      TextButton(
+        style: ButtonStyle(
+          overlayColor: MaterialStateProperty.all<Color>(Colors.transparent),
+        ),
+        onPressed: () {
+          context.goNamed('registration');
+        },
+        child: const Text('Inscris toi'),
+      ),
     ],
   );
 }

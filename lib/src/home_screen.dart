@@ -15,15 +15,16 @@ class _HomeScreenState extends State<HomeScreen> {
   final PageController _pageController = PageController();
   int _currentIndex = 0;
 
+  int get currentIndex => _currentIndex;
+  set currentIndex(int index) {
+    _currentIndex = index;
+  }
+
   void setScreenIndex(int index) {
     setState(() {
       currentIndex = index;
     });
-  }
-
-  int get currentIndex => _currentIndex;
-  set currentIndex(int index) {
-   _currentIndex = index;
+    _pageController.jumpToPage(index);
   }
 
   @override
@@ -38,10 +39,11 @@ class _HomeScreenState extends State<HomeScreen> {
         showSelectedLabels: false,
         showUnselectedLabels: false,
         onTap: (index) => setScreenIndex(index),
-        currentIndex: _currentIndex,
+        currentIndex: currentIndex,
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-              icon: Icon(Icons.home, size: 30), label: "Dictionary"),
+              icon: Icon(Icons.bookmark_add_outlined, size: 30),
+              label: "Dictionary"),
           BottomNavigationBarItem(
               icon: Icon(Icons.question_answer_outlined, size: 30),
               label: "Quiz"),
