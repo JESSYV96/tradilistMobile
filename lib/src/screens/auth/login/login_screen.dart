@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:tradilist_mobile/src/common/assets/ui_styles.dart';
+import 'package:tradilist_mobile/src/screens/auth/components/login_with_social_network.dart';
 
 import '../../../common/utils/colors.dart';
-import 'components/login_with_social_network.dart';
 import 'login_view_model.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -45,21 +45,7 @@ class LoginScreen extends StatelessWidget {
               ),
             ),
             const LoginWithSocialNetwork(),
-            Column(
-              children: [
-                const Text('Tu n\'as pas de compte ?'),
-                TextButton(
-                  style: ButtonStyle(
-                    overlayColor:
-                        MaterialStateProperty.all<Color>(Colors.transparent),
-                  ),
-                  onPressed: () {
-                    context.goNamed('registration');
-                  },
-                  child: const Text('Inscris toi'),
-                ),
-              ],
-            )
+            _notRegisteredWidget(context)
           ],
         ),
       ),
@@ -115,6 +101,23 @@ Widget _loginForm(LoginViewModel loginVM) {
           )
         ],
       )
+    ],
+  );
+}
+
+Widget _notRegisteredWidget(BuildContext context) {
+  return Column(
+    children: [
+      const Text('Tu n\'as pas de compte ?'),
+      TextButton(
+        style: ButtonStyle(
+          overlayColor: MaterialStateProperty.all<Color>(Colors.transparent),
+        ),
+        onPressed: () {
+          context.goNamed('registration');
+        },
+        child: const Text('Inscris toi'),
+      ),
     ],
   );
 }
